@@ -19,7 +19,9 @@ void writeW(char* str){
     time_t t;
     time(&t);
     struct tm *timeinfo = localtime(&t);
-    fprintf(logFile, "WARNING::%02d%02d%04d-%02d:%02d:%02d:%s\n", timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, str);
+    fprintf(logFile, "WARNING::%02d%02d%04d-%02d:%02d:%02d:%s\n", 
+	    timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900, 
+	    timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, str);
     fclose(logFile);
 }
 
@@ -28,7 +30,9 @@ void writeI(char* str){
     time_t t;
     time(&t);
     struct tm *timeinfo = localtime(&t);
-    fprintf(logFile, "INFO::%02d%02d%04d-%02d:%02d:%02d:%s\n", timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, str);
+    fprintf(logFile, "INFO::%02d%02d%04d-%02d:%02d:%02d:%s\n", 
+	    timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900, 
+	    timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, str);
     fclose(logFile);
 }
 
