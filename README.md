@@ -312,7 +312,19 @@ Adapun kendala yang dialami selama pengerjaan adalah sebagai berikut.
 1. Kurang mengerti langkah-langkah implementasi algoritma yang dibutuhkan terhadap filesystem
 
 
-## 3.
+## 3. Direktori Spesial
+##### a. mkdir
+Jika sebuah direktori dibuat dengan awalan “A_is_a_”, maka direktori tersebut akan menjadi sebuah direktori spesial.
+##### b. rename
+Jika sebuah direktori di-rename dengan memberi awalan “A_is_a_”, maka direktori tersebut akan menjadi sebuah direktori spesial.
+##### c. direktori normal
+Apabila direktori yang terenkripsi di-rename dengan menghapus “A_is_a_” pada bagian awal nama folder maka direktori tersebut menjadi direktori normal.
+
+Direktori spesial adalah direktori yang mengembalikan enkripsi/encoding pada direktori “AtoZ_” maupun “RX_” namun masing-masing aturan mereka tetap berjalan pada direktori di dalamnya (sifat recursive  “AtoZ_” dan “RX_” tetap berjalan pada subdirektori).
+Pada direktori spesial semua nama file (tidak termasuk ekstensi) pada fuse akan berubah menjadi lowercase insensitive dan diberi ekstensi baru berupa nilai desimal dari binner perbedaan namanya.
+
+Contohnya jika pada direktori asli nama filenya adalah “FiLe_CoNtoH.txt” maka pada fuse akan menjadi “file_contoh.txt.1321”. 1321 berasal dari biner 10100101001.
+
 
 ## 4. Log
 Pada soal ini, kita diminta untuk membuat file log bernama `SinSeiFS.log` yang diletakkan pada direktori home pengguna. Isi log terdiri dari dua level, yaitu `WARNING` untuk system call rmdir dan unlink, dan `INFO` untuk system call lainnya. Adapun format dari log tersebut adalah sebagai berikut.
