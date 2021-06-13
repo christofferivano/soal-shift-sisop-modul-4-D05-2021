@@ -288,7 +288,29 @@ Adapun kendala yang dialami selama pengerjaan adalah sebagai berikut.
 1. Untuk pembuatan direktori muncul error, namun direktori berhasil terbuat.
 2. Write file memunculkan pesan error.
 
-## 2.
+## 2. Metode Ekripsi tambahan ROT13 + Vigenere
+Hampir sama dengan persoalan nomor satu tetapi dengan penambahan metode enkripsi yang berbeda yaitu ROT13 dan Vigenere. 
+##### a. enkripsi ROT13
+Direktori yang dibuat dengan awalan “RX_[Nama]”, maka dilakukan encode beserta isinya menggunakan algoritma ROT13. ROT13 atau rotate by 13 adalah algoritma enkripsi yang menggunakan sandi abjad-tunggal dengan pergeseran k=13 (huruf A diganti dengan N, huruf B diganti dengan O, dan seterusnya).
+##### b. enkripsi Vigenere
+Untuk kali ini, jika sebuah direktori dilakukan rename dengan awalan awalan “RX_[Nama]”, maka dilakukan encode pada direktori tersebut beserta isinya dengan algoritma Vigenere. Sandi Vigenere adalah metode menyandikan teks dengan menggunakan tabel Vigenere. Cara kerjanya, pertama dibutuhkan kata kunci yaitu untuk ini adalah “SISOP”. Lalu, kata kunci diulang-ulang hingga memiliki jumlah huruf yang sama dengan teks yang akan dienkripsi, yang kemudian dengan menggunakan tabel Vigenere didapatkan kode enkripsi yang dibutuhkan setelahnya diterapkan.
+##### c. decode
+Direktori yang sudah ter-encode, apabila dilakuakan rename dihapus awalan “RX_” nya maka direktori-direktori tersebut beserta isinya akan ter-decode kembali ke nama aslinya tidak dengan kata sandi olahan algoritma enkripsi.
+##### d. catatan log
+Semua proses encode tadi perlu tercatat pada sebuah log file dengan keterangan method yang dilakukan apakah mkdir atau menggunakan rename.
+##### e. enkripsi menjadi file 1024 bytes
+Pada persoalan ini, dilakukan enkripsi terhadap file-file pada direktori asli sehingga mengakibatkan suatu file terbagi menjadi file-file kecil berukuran 1024 bytes, sementara jika file diakses melalui filesystem file tersebut normal. 
+Sebagai contoh, Suatu_File.txt berukuran 3 kiloBytes pada directory asli akan menjadi 3 file kecil yakni:
+
+Suatu_File.txt.0000\
+Suatu_File.txt.0001\
+Suatu_File.txt.0002
+
+Ketika diakses melalui filesystem hanya akan muncul Suatu_File.txt
+
+Adapun kendala yang dialami selama pengerjaan adalah sebagai berikut.
+1. Kurang mengerti langkah-langkah implementasi algoritma yang dibutuhkan terhadap filesystem
+
 
 ## 3.
 
